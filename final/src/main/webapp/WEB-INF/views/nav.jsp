@@ -138,7 +138,7 @@ body {
 <!------------ Navigation bar start ---------->
 	<nav class="navbar navbar-expand-lg bg-body-tertiary">
 	  <div class="container-fluid">
-	    <a class="navbar-brand" href="ServerProgramming/">CampusBuzz</a> 
+	    <a class="navbar-brand" href="/ServerProgramming/">CampusBuzz</a> 
 	    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
 	      <span class="navbar-toggler-icon"></span>
 	    </button>
@@ -185,7 +185,12 @@ body {
 	        <li class="nav-item">
           		<a class="nav-link active" aria-current="page" href="WayToCome">오시는 길</a>
         	</li>
-	        
+        	
+        	<!------------ login button ------------>
+
+        	<li class="nav-item">
+        		<a class="btn btn-outline-darky" href="login" role="button">LOGIN</a>
+			</li>
 	      </ul>
 	    </div>
 	  </div>
