@@ -1,0 +1,15 @@
+# MyBatis
+create table spring_mvc_table(
+    data1 varchar2(100) not null,
+    data2 varchar2(100) not null,
+    data3 varchar2(100) not null
+);
+
+-- 테이블 생성
+CREATE TABLE DataBean(
+    boardID NUMBER PRIMARY KEY,
+    CATEGORY VARCHAR2(255) NOT NULL,
+    TITLE VARCHAR2(255),
+    CONTENT CLOB NOT NULL,
+    userID VARCHAR2(255) NOT NULL
+);
