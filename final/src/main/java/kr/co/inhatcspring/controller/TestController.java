@@ -2,6 +2,8 @@ package kr.co.inhatcspring.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -34,14 +36,16 @@ public class TestController {
      *
      * @param category the category of the board (default: "Department Introduction")
      * @param model the model to add attributes to for rendering the view
+     * @param session the HTTP session to get user info
      * @return the view name
      */
     @GetMapping("/departmentIntrodunction")
-    public String aboutDepartment(@RequestParam(value = "category", required = false, defaultValue = "Department Introduction") String category, Model model) {
+    public String aboutDepartment(@RequestParam(value = "category", required = false, defaultValue = "Department Introduction") String category, Model model, HttpSession session) {
         List<OnlineBoard> boardList = mapper.getBoardList(category);
         model.addAttribute("boardList", boardList);
         model.addAttribute("category", category);
-        return "viewList"; // View for department introduction
+        model.addAttribute("isManager", session.getAttribute("isManager")); // 관리자 여부 추가
+        return "managerViewList"; // View for department introduction
     }
 
     /**
@@ -49,14 +53,16 @@ public class TestController {
      *
      * @param category the category of the board (default: "Department History")
      * @param model the model to add attributes to for rendering the view
+     * @param session the HTTP session to get user info
      * @return the view name
      */
     @GetMapping("/departmentHistory")
-    public String departmentHistory(@RequestParam(value = "category", required = false, defaultValue = "Department History") String category, Model model) {
+    public String departmentHistory(@RequestParam(value = "category", required = false, defaultValue = "Department History") String category, Model model, HttpSession session) {
         List<OnlineBoard> boardList = mapper.getBoardList(category);
         model.addAttribute("boardList", boardList);
         model.addAttribute("category", category);
-        return "viewList"; // View for department history
+        model.addAttribute("isManager", session.getAttribute("isManager")); // 관리자 여부 추가
+        return "managerViewList"; // View for department history
     }
 
     // ===============================
@@ -68,14 +74,16 @@ public class TestController {
      *
      * @param category the category of the board (default: "firstYear")
      * @param model the model to add attributes to for rendering the view
+     * @param session the HTTP session to get user info
      * @return the view name
      */
     @GetMapping("/firstYear")
-    public String firstGrade(@RequestParam(value = "category", required = false, defaultValue = "firstYear") String category, Model model) {
+    public String firstGrade(@RequestParam(value = "category", required = false, defaultValue = "firstYear") String category, Model model, HttpSession session) {
         List<OnlineBoard> boardList = mapper.getBoardList(category);
         model.addAttribute("boardList", boardList);
         model.addAttribute("category", category);
-        return "viewList"; // View for first-year curriculum
+        model.addAttribute("isManager", session.getAttribute("isManager")); // 관리자 여부 추가
+        return "managerViewList"; // View for first-year curriculum
     }
 
     /**
@@ -83,14 +91,16 @@ public class TestController {
      *
      * @param category the category of the board (default: "secondYear")
      * @param model the model to add attributes to for rendering the view
+     * @param session the HTTP session to get user info
      * @return the view name
      */
     @GetMapping("/secondYear")
-    public String secondGrade(@RequestParam(value = "category", required = false, defaultValue = "secondYear") String category, Model model) {
+    public String secondGrade(@RequestParam(value = "category", required = false, defaultValue = "secondYear") String category, Model model, HttpSession session) {
         List<OnlineBoard> boardList = mapper.getBoardList(category);
         model.addAttribute("boardList", boardList);
         model.addAttribute("category", category);
-        return "viewList"; // View for second-year curriculum
+        model.addAttribute("isManager", session.getAttribute("isManager")); // 관리자 여부 추가
+        return "managerViewList"; // View for second-year curriculum
     }
 
     /**
@@ -98,14 +108,16 @@ public class TestController {
      *
      * @param category the category of the board (default: "thirdYear")
      * @param model the model to add attributes to for rendering the view
+     * @param session the HTTP session to get user info
      * @return the view name
      */
     @GetMapping("/thirdYear")
-    public String thirdGrade(@RequestParam(value = "category", required = false, defaultValue = "thirdYear") String category, Model model) {
+    public String thirdGrade(@RequestParam(value = "category", required = false, defaultValue = "thirdYear") String category, Model model, HttpSession session) {
         List<OnlineBoard> boardList = mapper.getBoardList(category);
         model.addAttribute("boardList", boardList);
         model.addAttribute("category", category);
-        return "viewList"; // View for third-year curriculum
+        model.addAttribute("isManager", session.getAttribute("isManager")); // 관리자 여부 추가
+        return "managerViewList"; // View for third-year curriculum
     }
 
     /**
@@ -113,15 +125,18 @@ public class TestController {
      *
      * @param category the category of the board (default: "advancedMajor")
      * @param model the model to add attributes to for rendering the view
+     * @param session the HTTP session to get user info
      * @return the view name
      */
     @GetMapping("/advancedMajor")
-    public String advancedMajor(@RequestParam(value = "category", required = false, defaultValue = "advancedMajor") String category, Model model) {
+    public String advancedMajor(@RequestParam(value = "category", required = false, defaultValue = "advancedMajor") String category, Model model, HttpSession session) {
         List<OnlineBoard> boardList = mapper.getBoardList(category);
         model.addAttribute("boardList", boardList);
         model.addAttribute("category", category);
-        return "viewList"; // View for advanced major curriculum
+        model.addAttribute("isManager", session.getAttribute("isManager")); // 관리자 여부 추가
+        return "managerViewList"; // View for advanced major curriculum
     }
+
 
     // ===============================
     // Community Controller
