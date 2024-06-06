@@ -31,13 +31,13 @@ public class PostController {
     @PostMapping("/submitPost")
     public String insertBoardData(@RequestParam("category") String category,
                                   @RequestParam("title") String title,
-                                  @RequestParam("userId") String userId,
+                                  @RequestParam("userID") String userID,
                                   @RequestParam("content") String content) {
         OnlineBoard boardDataBean = new OnlineBoard();
         boardDataBean.setCategory(category);
         boardDataBean.setTitle(title);
         boardDataBean.setContent(content);
-        boardDataBean.setUserId(userId);
+        boardDataBean.setUserId(userID);
 
         // Save the data
         mapper.insertBoardData(boardDataBean);

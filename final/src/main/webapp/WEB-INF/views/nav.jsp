@@ -3,7 +3,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>CampusBuzz</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"></script>
 <style>
@@ -15,9 +15,9 @@ body {
   background-color: #f8f9fa;
   margin: 0;
   padding: 0;
-  height: 100vh;
-  overflow: hidden;
+  min-height: 100vh;
   position: relative;
+  overflow: auto;
 }
 
 /* Animation for welcome text */
@@ -143,8 +143,7 @@ body {
 	      <span class="navbar-toggler-icon"></span>
 	    </button>
 	    <div class="collapse navbar-collapse" id="navbarNavDropdown">
-	      <ul class="navbar-nav">
-	      
+	      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 	      	<!------------ Department Information Dropdown ---------->
 	        <li class="nav-item dropdown">
 	          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -185,18 +184,29 @@ body {
 	        <li class="nav-item">
           		<a class="nav-link active" aria-current="page" href="WayToCome">오시는 길</a>
         	</li>
-        	
-        	<!------------ login button ------------>
-
+	      </ul>
+	      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        	<% 
+        	String userID = (String) session.getAttribute("userID");
+        	String nickname = (String) session.getAttribute("nickname");
+        	if (userID != null) { 
+        	%>
+        	<!------------ 로그인 상태 ------------>
         	<li class="nav-item">
-        		<a class="btn btn-outline-darky" href="login" role="button">LOGIN</a>
-			</li>
+        		<a class="nav-link" href="profile"><%= nickname %></a>
+        	</li>
+        	<li class="nav-item">
+        		<a class="btn btn-outline-dark" href="logout" role="button">LOGOUT</a>
+        	</li>
+        	<% } else { %>
+        	<!------------ 로그아웃 상태 ------------>
+        	<li class="nav-item">
+        		<a class="btn btn-outline-dark" href="login" role="button">LOGIN</a>
+        	</li>
+        	<% } %>
 	      </ul>
 	    </div>
 	  </div>
 	</nav>
-
-
-
 </body>
 </html>

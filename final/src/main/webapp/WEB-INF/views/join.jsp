@@ -1,10 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Sign in</title>
+  <title>Sign up</title>
   <style>
     * {
       padding: 0;
@@ -253,25 +254,28 @@
         <div class="formbg-outer">
           <div class="formbg">
             <div class="formbg-inner padding-horizontal--48">
-              <form id="stripe-login">
-              	<div class="field padding-bottom--24">
-                  <label for="text">Name</label>
-                  <input type="text" name="name">
+              <form:form id="stripe-login" method="post" modelAttribute="member" action="${pageContext.request.contextPath}/join">
+                <div class="field padding-bottom--24">
+                  <label for="nickname">Name</label>
+                  <form:input path="nickname" cssClass="form-control" />
+                  <form:errors path="nickname" cssClass="text-danger" />
                 </div>
                 <div class="field padding-bottom--24">
-                  <label for="text">Id</label>
-                  <input type="text" name="id">
+                  <label for="userID">Id</label>
+                  <form:input path="userID" cssClass="form-control" />
+                  <form:errors path="userID" cssClass="text-danger" />
                 </div>
                 <div class="field padding-bottom--24">
                   <div class="grid--50-50">
                     <label for="password">Password</label>
                   </div>
-                  <input type="password" name="password">
+                  <form:input path="password" type="password" cssClass="form-control" />
+                  <form:errors path="password" cssClass="text-danger" />
                 </div>
                 <div class="field padding-bottom--24">
                   <input type="submit" name="submit" value="Continue">
                 </div>
-              </form>
+              </form:form>
             </div>
           </div>
           <div class="footer-link padding-top--24">
@@ -282,6 +286,4 @@
     </div>
   </div>
 </body>
-
 </html>
-    

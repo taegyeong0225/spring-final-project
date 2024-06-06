@@ -10,6 +10,7 @@ import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
 import kr.co.inhatcspring.beans.Member;
+import kr.co.inhatcspring.beans.OnlineBoard;
 
 public interface MemberMapperInterface {
 
@@ -31,4 +32,7 @@ public interface MemberMapperInterface {
 
     @Delete("DELETE FROM Member WHERE userID = #{userID}")
     void deleteMember(@Param("userID") String userID);
+    
+    @Select("SELECT * FROM ONLINEBOARD WHERE userID = #{userID}")
+    List<OnlineBoard> getPostsByUser(String userID);
 }

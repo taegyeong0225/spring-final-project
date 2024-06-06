@@ -23,10 +23,11 @@
             <textarea class="form-control" id="content" name="content" rows="5" required></textarea>
         </div>
         <div class="mb-3">
-            <label for="userId" class="form-label">User ID</label>
-            <input type="text" class="form-control" id="userId" name="userId" required>
+            <label for="userID" class="form-label">User ID</label>
+            <input type="text" class="form-control" id="userID" value="${sessionScope.userID}" disabled>
+            <input type="hidden" name="userID" value="${sessionScope.userID}">
         </div>
-        <button type="submit" class="btn btn-danger">save</button>
+        <button type="submit" class="btn btn-danger">Save</button>
     </form>
 </div>
 

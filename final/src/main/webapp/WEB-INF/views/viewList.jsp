@@ -65,6 +65,7 @@
     <div class="mt-4">
         <c:choose>
             <c:when test="${not empty boardList}">
+            	<a href="${pageContext.request.contextPath}/Post?category=${category}" class="btn btn-success mt-3">Create your post</a>
                 <div class="row">
                     <c:forEach var="board" items="${boardList}">
                         <div class="col-md-6">
