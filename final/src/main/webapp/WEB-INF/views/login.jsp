@@ -253,10 +253,10 @@
         <div class="formbg-outer">
           <div class="formbg">
             <div class="formbg-inner padding-horizontal--48">
-              <form id="stripe-login">
+              <form id="stripe-login" action="login" method="post">
                 <div class="field padding-bottom--24">
-                  <label for="text">Id</label>
-                  <input type="text" name="id">
+                  <label for="userID">Id</label>
+                  <input type="text" name="userID">
                 </div>
                 <div class="field padding-bottom--24">
                   <div class="grid--50-50">
@@ -280,4 +280,3 @@
 </body>
 
 </html>
-    

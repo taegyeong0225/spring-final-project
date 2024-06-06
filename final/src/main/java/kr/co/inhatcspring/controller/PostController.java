@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import kr.co.inhatcspring.beans.DataBean;
+import kr.co.inhatcspring.beans.OnlineBoard;
 import kr.co.inhatcspring.mapper.MapperInterface;
 
 @Controller
@@ -33,7 +33,7 @@ public class PostController {
                                   @RequestParam("title") String title,
                                   @RequestParam("userId") String userId,
                                   @RequestParam("content") String content) {
-        DataBean boardDataBean = new DataBean();
+        OnlineBoard boardDataBean = new OnlineBoard();
         boardDataBean.setCategory(category);
         boardDataBean.setTitle(title);
         boardDataBean.setContent(content);
@@ -48,7 +48,7 @@ public class PostController {
     // Navigate to the post viewing page
     @GetMapping("/viewPost")
     public String viewPost(@RequestParam("boardId") Long boardId, Model model) {
-        DataBean boardDataBean = mapper.getBoardData(boardId);
+        OnlineBoard boardDataBean = mapper.getBoardData(boardId);
         model.addAttribute("boardDataBean", boardDataBean); // Add 'boardDataBean' attribute to the model
         return "viewPost"; // Return the view for viewing a post
     }
@@ -64,7 +64,7 @@ public class PostController {
     public String editPost(@RequestParam("boardId") Long boardId,
                            @RequestParam("category") String category,
                            Model model) {
-        DataBean boardDataBean = mapper.getBoardData(boardId);
+        OnlineBoard boardDataBean = mapper.getBoardData(boardId);
         model.addAttribute("boardDataBean", boardDataBean);
         model.addAttribute("category", category); // Add the category to the model
         return "editPost"; // Return the view for editing a post
@@ -75,7 +75,7 @@ public class PostController {
                                   @RequestParam("category") String category,
                                   @RequestParam("title") String title,
                                   @RequestParam("content") String content) {
-        DataBean boardDataBean = new DataBean();
+        OnlineBoard boardDataBean = new OnlineBoard();
         boardDataBean.setBoardId(boardId);
         boardDataBean.setCategory(category);
         boardDataBean.setTitle(title);

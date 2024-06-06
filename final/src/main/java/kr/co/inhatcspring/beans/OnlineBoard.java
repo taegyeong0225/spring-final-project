@@ -1,6 +1,6 @@
 package kr.co.inhatcspring.beans;
 
-public class DataBean {
+public class OnlineBoard {
     private Long boardId;
     private String category;
     private String title;

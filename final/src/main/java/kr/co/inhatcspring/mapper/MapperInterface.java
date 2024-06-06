@@ -4,11 +4,12 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
-import kr.co.inhatcspring.beans.DataBean;
+import kr.co.inhatcspring.beans.OnlineBoard;
 
 public interface MapperInterface {
 
@@ -23,7 +24,7 @@ public interface MapperInterface {
      * @param boardDataBean The BoardDataBean object containing the data to be inserted.
      */
     @Insert("INSERT INTO ONLINEBOARD (BOARDID, CATEGORY, TITLE, CONTENT, USERID) VALUES (board_seq.NEXTVAL, #{category}, #{title}, #{content}, #{userId})")
-    void insertBoardData(DataBean boardDataBean);
+    void insertBoardData(OnlineBoard boardDataBean);
 
     /**
      * Retrieves a list of board data for a specific category.
@@ -33,7 +34,7 @@ public interface MapperInterface {
      * @return A list of BoardDataBean objects representing the board data.
      */
     @Select("SELECT * FROM ONLINEBOARD WHERE CATEGORY = #{category} ORDER BY BOARDID DESC")
-    List<DataBean> getBoardList(String category);
+    List<OnlineBoard> getBoardList(String category);
 
     /**
      * Retrieves board data by a specific board ID.
@@ -42,7 +43,7 @@ public interface MapperInterface {
      * @return A BoardDataBean object representing the board data.
      */
     @Select("SELECT * FROM ONLINEBOARD WHERE BOARDID = #{boardId}")
-    DataBean getBoardData(@Param("boardId") Long boardId);
+    OnlineBoard getBoardData(@Param("boardId") Long boardId);
 
     /**
      * Updates board data for a specific board ID.
@@ -50,7 +51,7 @@ public interface MapperInterface {
      * @param boardDataBean The BoardDataBean object containing the updated data.
      */
     @Update("UPDATE ONLINEBOARD SET TITLE = #{title}, CONTENT = #{content} WHERE BOARDID = #{boardId}")
-    void updateBoardData(DataBean boardDataBean);
+    void updateBoardData(OnlineBoard boardDataBean);
 
     /**
      * Deletes board data for a specific board ID.

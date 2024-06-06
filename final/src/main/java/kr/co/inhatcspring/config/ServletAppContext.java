@@ -1,10 +1,10 @@
 package kr.co.inhatcspring.config;
-import org.apache.commons.dbcp2.BasicDataSource; 
+import org.apache.commons.dbcp2.BasicDataSource;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
+import org.mybatis.spring.annotation.MapperScan;
 import org.mybatis.spring.mapper.MapperFactoryBean;
 import org.springframework.beans.factory.annotation.Value;
-
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -15,6 +15,7 @@ import org.springframework.web.servlet.config.annotation.ViewResolverRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import kr.co.inhatcspring.mapper.MapperInterface;
+import kr.co.inhatcspring.mapper.MemberMapperInterface;
 
 @Configuration
 // Controller 어노테이션이 셋팅되어 있는 클래스를 Controller로 등록한다.
@@ -76,6 +77,14 @@ public class ServletAppContext implements WebMvcConfigurer {
 	    
 	    return factoryBean;
 	}
+	
+	// MemberMapperInterface를 위한 MapperFactoryBean
+    @Bean
+    public MapperFactoryBean<MemberMapperInterface> member_mapper(SqlSessionFactory factory) throws Exception {
+        MapperFactoryBean<MemberMapperInterface> factoryBean = new MapperFactoryBean<>(MemberMapperInterface.class);
+        factoryBean.setSqlSessionFactory(factory);
+        return factoryBean;
+    }
 	
 
 }

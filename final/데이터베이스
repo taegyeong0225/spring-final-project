@@ -6,10 +6,30 @@ create table spring_mvc_table(
 );
 
 -- 테이블 생성
-CREATE TABLE DataBean(
+CREATE TABLE ONLINEBOARD(
     boardID NUMBER PRIMARY KEY,
     CATEGORY VARCHAR2(255) NOT NULL,
     TITLE VARCHAR2(255),
     CONTENT CLOB NOT NULL,
     userID VARCHAR2(255) NOT NULL
 );
+
+
+-------- 기말 범위 ---------
+
+-- Member 테이블 생성
+CREATE TABLE Member(
+    userID VARCHAR2(255) PRIMARY KEY,
+    Password VARCHAR2(255) NOT NULL,
+    nickname VARCHAR2(255) NOT NULL,
+    Is_manager CHAR(1) DEFAULT 'N' NOT NULL
+);
+
+-- ONLINEBOARD 테이블에 대한 외래 키 설정
+ALTER TABLE ONLINEBOARD
+ADD CONSTRAINT FK_OnlineBorad_Member
+FOREIGN KEY (userID) REFERENCES Member(userID);
+
+-- 관리자 계정 추가
+INSERT INTO Member (userID, Password, nickname, Is_manager)
+VALUES ('admin', 'admin', 'admin', 'Y');

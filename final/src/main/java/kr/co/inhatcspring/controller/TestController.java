@@ -8,7 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import kr.co.inhatcspring.beans.DataBean;
+import kr.co.inhatcspring.beans.OnlineBoard;
 import kr.co.inhatcspring.mapper.MapperInterface;
 
 @Controller
@@ -38,7 +38,7 @@ public class TestController {
      */
     @GetMapping("/departmentIntrodunction")
     public String aboutDepartment(@RequestParam(value = "category", required = false, defaultValue = "Department Introduction") String category, Model model) {
-        List<DataBean> boardList = mapper.getBoardList(category);
+        List<OnlineBoard> boardList = mapper.getBoardList(category);
         model.addAttribute("boardList", boardList);
         model.addAttribute("category", category);
         return "viewList"; // View for department introduction
@@ -53,7 +53,7 @@ public class TestController {
      */
     @GetMapping("/departmentHistory")
     public String departmentHistory(@RequestParam(value = "category", required = false, defaultValue = "Department History") String category, Model model) {
-        List<DataBean> boardList = mapper.getBoardList(category);
+        List<OnlineBoard> boardList = mapper.getBoardList(category);
         model.addAttribute("boardList", boardList);
         model.addAttribute("category", category);
         return "viewList"; // View for department history
@@ -72,7 +72,7 @@ public class TestController {
      */
     @GetMapping("/firstYear")
     public String firstGrade(@RequestParam(value = "category", required = false, defaultValue = "firstYear") String category, Model model) {
-        List<DataBean> boardList = mapper.getBoardList(category);
+        List<OnlineBoard> boardList = mapper.getBoardList(category);
         model.addAttribute("boardList", boardList);
         model.addAttribute("category", category);
         return "viewList"; // View for first-year curriculum
@@ -87,7 +87,7 @@ public class TestController {
      */
     @GetMapping("/secondYear")
     public String secondGrade(@RequestParam(value = "category", required = false, defaultValue = "secondYear") String category, Model model) {
-        List<DataBean> boardList = mapper.getBoardList(category);
+        List<OnlineBoard> boardList = mapper.getBoardList(category);
         model.addAttribute("boardList", boardList);
         model.addAttribute("category", category);
         return "viewList"; // View for second-year curriculum
@@ -102,7 +102,7 @@ public class TestController {
      */
     @GetMapping("/thirdYear")
     public String thirdGrade(@RequestParam(value = "category", required = false, defaultValue = "thirdYear") String category, Model model) {
-        List<DataBean> boardList = mapper.getBoardList(category);
+        List<OnlineBoard> boardList = mapper.getBoardList(category);
         model.addAttribute("boardList", boardList);
         model.addAttribute("category", category);
         return "viewList"; // View for third-year curriculum
@@ -117,7 +117,7 @@ public class TestController {
      */
     @GetMapping("/advancedMajor")
     public String advancedMajor(@RequestParam(value = "category", required = false, defaultValue = "advancedMajor") String category, Model model) {
-        List<DataBean> boardList = mapper.getBoardList(category);
+        List<OnlineBoard> boardList = mapper.getBoardList(category);
         model.addAttribute("boardList", boardList);
         model.addAttribute("category", category);
         return "viewList"; // View for advanced major curriculum
@@ -136,7 +136,7 @@ public class TestController {
      */
     @GetMapping("/notification")
     public String notification(@RequestParam(value = "category", required = false, defaultValue = "notification") String category, Model model) {
-        List<DataBean> boardList = mapper.getBoardList(category);
+        List<OnlineBoard> boardList = mapper.getBoardList(category);
         model.addAttribute("boardList", boardList);
         model.addAttribute("category", category);
         return "viewList"; // View for notification
@@ -151,7 +151,7 @@ public class TestController {
      */
     @GetMapping("/FrequentlyAskedQuestions")
     public String frequentlyAskedQuestions(@RequestParam(value = "category", required = false, defaultValue = "FAQ") String category, Model model) {
-        List<DataBean> boardList = mapper.getBoardList(category);
+        List<OnlineBoard> boardList = mapper.getBoardList(category);
         model.addAttribute("boardList", boardList);
         model.addAttribute("category", category);
         return "viewList"; // View for frequently asked questions
@@ -166,7 +166,7 @@ public class TestController {
      */
     @GetMapping("/FreeBoard")
     public String freeBoard(@RequestParam(value = "category", required = false, defaultValue = "FreeBoard") String category, Model model) {
-        List<DataBean> boardList = mapper.getBoardList(category);
+        List<OnlineBoard> boardList = mapper.getBoardList(category);
         model.addAttribute("boardList", boardList);
         model.addAttribute("category", category);
         return "viewList"; // View for free board
