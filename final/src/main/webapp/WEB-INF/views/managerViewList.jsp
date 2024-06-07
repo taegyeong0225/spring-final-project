@@ -66,9 +66,9 @@
         <c:choose>
             <c:when test="${not empty boardList}">
                 <!-- 관리자일 경우에만 작성 버튼을 표시 -->
-    			<c:if test="${sessionScope.isManager eq 'Y'}">
-        			<a href="${pageContext.request.contextPath}/Post?category=${category}" class="btn btn-success mt-3">Create your post</a>
-    			</c:if>
+				<c:if test="${sessionScope.isManager eq 'Y'}">
+				    <a href="${pageContext.request.contextPath}/Post?category=${category}" class="btn btn-success mt-3">Create your post</a>
+				</c:if>
                 <div class="row">
                     <c:forEach var="board" items="${boardList}">
                         <div class="col-md-6">

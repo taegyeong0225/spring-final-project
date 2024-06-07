@@ -19,11 +19,11 @@
       <p><strong>User ID:</strong> ${sessionScope.userID}</p>
       <p><strong>Nickname:</strong> ${sessionScope.nickname}</p>
       <p><strong>Is Manager:</strong> 
-	  <c:choose>
-    		<c:when test="${sessionScope.isManager eq 'Y'}">Yes</c:when>
-    		<c:otherwise>No</c:otherwise>
-	  </c:choose>
-      </p>
+	    <c:choose>
+	        <c:when test="${sessionScope.isManager eq 'Y'}">Yes</c:when>
+	        <c:otherwise>No</c:otherwise>
+	    </c:choose>
+	  </p>
       <hr>
       <h4>My Posts</h4>
       <c:forEach var="post" items="${userPosts}">

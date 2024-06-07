@@ -22,7 +22,7 @@ CREATE TABLE Member(
     userID VARCHAR2(255) PRIMARY KEY,
     Password VARCHAR2(255) NOT NULL,
     nickname VARCHAR2(255) NOT NULL,
-    Is_manager CHAR(1) DEFAULT 'N' NOT NULL
+    ismanager CHAR(1) DEFAULT 'N' NOT NULL
 );
 
 -- ONLINEBOARD 테이블에 대한 외래 키 설정
@@ -31,5 +31,5 @@ ADD CONSTRAINT FK_OnlineBorad_Member
 FOREIGN KEY (userID) REFERENCES Member(userID);
 
 -- 관리자 계정 추가
-INSERT INTO Member (userID, Password, nickname, Is_manager)
+INSERT INTO Member (userID, Password, nickname, ismanager)
 VALUES ('admin', 'admin', 'admin', 'Y');

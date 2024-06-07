@@ -1,28 +1,30 @@
 package kr.co.inhatcspring.controller;
 
+import java.util.List;
 import javax.servlet.http.HttpSession;
-
+import javax.validation.Valid;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
-import java.util.List;
 import kr.co.inhatcspring.beans.Member;
 import kr.co.inhatcspring.beans.OnlineBoard;
-import javax.validation.Valid;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import kr.co.inhatcspring.mapper.MemberMapperInterface;
 
 @Controller
 public class MemberController {
-    
+
+    private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
+
     @Autowired
     private MemberMapperInterface memberMapper;
-    
+
     // 로그인 페이지
     @GetMapping("login")
     public String login() {
@@ -39,7 +41,11 @@ public class MemberController {
         if (member != null && member.getPassword().equals(password)) {
             session.setAttribute("userID", member.getUserID());
             session.setAttribute("nickname", member.getNickname());
-            session.setAttribute("isManager", String.valueOf(member.getIsManager())); // 문자열로 설정
+            session.setAttribute("isManager", String.valueOf(member.getIsManager())); // char -> String 변환
+
+            logger.info("Member details: {}", member);
+            logger.info("Session isManager: {}", session.getAttribute("isManager"));
+
             return "redirect:/"; // 로그인 성공 시 홈 페이지로 리다이렉트
         } else {
             model.addAttribute("error", "Invalid username or password");
@@ -53,6 +59,7 @@ public class MemberController {
         String userID = (String) session.getAttribute("userID");
         List<OnlineBoard> userPosts = memberMapper.getPostsByUser(userID);
         model.addAttribute("userPosts", userPosts);
+        logger.info("User posts: {}", userPosts);
         return "member/profile";
     }
 
@@ -78,16 +85,18 @@ public class MemberController {
         Member member = new Member(userID, password, nickname, isManager);
         memberMapper.updateMember(member);
         session.setAttribute("nickname", nickname);
+        logger.info("Updated member info: {}", member);
         return "redirect:/profile";
     }
-    
+
     // 로그아웃 처리
     @GetMapping("logout")
     public String logout(HttpSession session) {
         session.invalidate(); // 세션 무효화
+        logger.info("Session invalidated");
         return "redirect:/"; // 로그아웃 후 홈 페이지로 리다이렉트
     }
-    
+
     // 회원가입 페이지
     @GetMapping("join")
     public String join(Model model) {
@@ -116,6 +125,7 @@ public class MemberController {
         session.setAttribute("nickname", member.getNickname());
         session.setAttribute("isManager", String.valueOf(member.getIsManager()));
 
+        logger.info("New member registered: {}", member);
         return "redirect:/"; // 회원가입 성공 후 홈 페이지로 리다이렉트
     }
 }
