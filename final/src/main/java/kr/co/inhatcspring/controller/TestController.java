@@ -39,7 +39,7 @@ public class TestController {
      * @param session the HTTP session to get user info
      * @return the view name
      */
-    @GetMapping("/departmentIntrodunction")
+    @GetMapping("/departmentIntroduction")
     public String aboutDepartment(@RequestParam(value = "category", required = false, defaultValue = "departmentIntroduction") String category, Model model, HttpSession session) {
         List<OnlineBoard> boardList = mapper.getBoardList(category);
         model.addAttribute("boardList", boardList);

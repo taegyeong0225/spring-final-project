@@ -150,7 +150,7 @@ body {
 	            학과안내
 	          </a>
 	          <ul class="dropdown-menu">
-	            <li><a class="dropdown-item" href="departmentIntrodunction">학과소개</a></li>
+	            <li><a class="dropdown-item" href="departmentIntroduction">학과소개</a></li>
 	            <li><a class="dropdown-item" href="departmentHistory">학과연혁</a></li>
 	          </ul>
 	        </li>
