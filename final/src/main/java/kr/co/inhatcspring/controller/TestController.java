@@ -40,7 +40,7 @@ public class TestController {
      * @return the view name
      */
     @GetMapping("/departmentIntrodunction")
-    public String aboutDepartment(@RequestParam(value = "category", required = false, defaultValue = "Department Introduction") String category, Model model, HttpSession session) {
+    public String aboutDepartment(@RequestParam(value = "category", required = false, defaultValue = "departmentIntroduction") String category, Model model, HttpSession session) {
         List<OnlineBoard> boardList = mapper.getBoardList(category);
         model.addAttribute("boardList", boardList);
         model.addAttribute("category", category);
@@ -57,7 +57,7 @@ public class TestController {
      * @return the view name
      */
     @GetMapping("/departmentHistory")
-    public String departmentHistory(@RequestParam(value = "category", required = false, defaultValue = "Department History") String category, Model model, HttpSession session) {
+    public String departmentHistory(@RequestParam(value = "category", required = false, defaultValue = "departmentHistory") String category, Model model, HttpSession session) {
         List<OnlineBoard> boardList = mapper.getBoardList(category);
         model.addAttribute("boardList", boardList);
         model.addAttribute("category", category);
@@ -197,7 +197,10 @@ public class TestController {
      * @return the view name
      */
     @GetMapping("WayToCome")
-    public String directions() {
+    public String directions(@RequestParam(value = "category", required = false, defaultValue = "WayToCome") String category, Model model) {
+        List<OnlineBoard> boardList = mapper.getBoardList(category);
+        model.addAttribute("boardList", boardList);
+        model.addAttribute("category", category);
         return "WayToCome"; // View for directions
        
     }
