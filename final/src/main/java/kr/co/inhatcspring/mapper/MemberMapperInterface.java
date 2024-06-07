@@ -25,7 +25,7 @@ public interface MemberMapperInterface {
     List<Member> getAllMembers();
 
 
-    @Update("UPDATE Member SET Password = #{password}, nickname = #{nickname}, Is_manager = #{isManager} WHERE userID = #{userID}")
+    @Update("UPDATE Member SET Password = #{password}, nickname = #{nickname}, isManager = #{isManager} WHERE userID = #{userID}")
     void updateMember(Member member);
 
 

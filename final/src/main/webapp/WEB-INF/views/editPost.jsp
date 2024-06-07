@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -65,11 +66,13 @@
         </div>
         
         <!-- Buttons for updating or deleting the post -->
-        <div class="d-flex justify-content-between">
-            <button type="submit" class="btn btn-primary">Update</button>
-            <!-- Delete Button with confirmation dialog -->
-            <a href="${pageContext.request.contextPath}/deletePost?boardId=${boardDataBean.boardId}&category=${boardDataBean.category}" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this post?');">Delete</a>
-        </div>
+        <c:if test="${sessionScope.userID eq boardDataBean.userId}">
+            <div class="d-flex justify-content-between">
+                <button type="submit" class="btn btn-primary">Update</button>
+                <!-- Delete Button with confirmation dialog -->
+                <a href="${pageContext.request.contextPath}/deletePost?boardId=${boardDataBean.boardId}&category=${boardDataBean.category}" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this post?');">Delete</a>
+            </div>
+        </c:if>
     </form>
 </div>
 
